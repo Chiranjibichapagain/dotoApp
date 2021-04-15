@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+import Button from './components/Button';
+import './app.scss';
 
 function App() {
+  const submit = () => {
+    console.log('pressed');
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>Welcome to the app</h1>
+      <Button modifier="active" text="Register" handleClick={submit} />
+      <Button
+        modifier="disabled"
+        disabled={true}
+        text="Register"
+        handleClick={submit}
+      />
     </div>
   );
 }
