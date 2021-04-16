@@ -35,7 +35,10 @@ const Header = () => {
         )}
       </div>
       <div className="header__btn-wrapper">
-        <Btn handleClick={handleLogin} text="Login" />
+        <Btn
+          handleClick={isUserLoggedIn ? handleLogout : handleLogin}
+          text={isUserLoggedIn ? 'Log Out' : 'Log In'}
+        />
       </div>
       <div
         className={

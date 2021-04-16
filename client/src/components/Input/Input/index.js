@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   root: {
+    marginBottom: '20px',
     '& $notchedOutline': {
       borderColor: '#444d63a1',
     },
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
 });
 
 const Input = ({ label, type, value, setValue, helperText, ...rest }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -37,17 +38,17 @@ const Input = ({ label, type, value, setValue, helperText, ...rest }) => {
   };
 
   const outlinedInputClasses = useStyles();
-
   return (
     <FormControl variant="outlined">
       <InputLabel style={{ color: '#444d63' }} {...rest} htmlFor="password">
         {label}
       </InputLabel>
       <OutlinedInput
+        margin="none"
         classes={outlinedInputClasses}
         {...rest}
         id="password"
-        type={type}
+        type={showPassword ? 'text' : 'password'}
         value={value}
         onChange={setValue}
         endAdornment={
