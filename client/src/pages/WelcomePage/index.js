@@ -18,7 +18,17 @@ const WelcomePage = () => {
 
   const { name, email, password } = fields;
 
-  console.log('test--', name, email, password);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const credentials = { email, password };
+    console.log('logged in');
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const user = { name, email, password };
+    console.log('registered');
+  };
 
   return (
     <div className="welcomepage">
@@ -56,7 +66,7 @@ const WelcomePage = () => {
             />
 
             <div className="welcomepage__btn-div">
-              <Button text="Login" />
+              <Button handleClick={handleLogin} text="Login" />
             </div>
             <p className="welcomepage__text">
               Don't have an account?{' '}
@@ -102,7 +112,7 @@ const WelcomePage = () => {
             />
 
             <div className="welcomepage__btn-div">
-              <Button text="Register" />
+              <Button handleClick={handleRegister} text="Register" />
             </div>
             <p className="welcomepage__text">
               Already have an account?{' '}
