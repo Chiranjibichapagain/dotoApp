@@ -1,13 +1,15 @@
 import React from 'react';
 
+import Routes from './routes';
+
 import './app.scss';
-import Input from './components/Input';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="app">
-      <Input label="password" type="password" />
-      {/* <Input helperText="Fix this" error="error" label="Text" type="text" /> */}
+      <Header />
+      <Routes />
     </div>
   );
 }

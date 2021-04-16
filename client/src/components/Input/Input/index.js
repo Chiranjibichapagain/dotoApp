@@ -10,8 +10,6 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useForm } from '../../hooks/useForm';
-
 const useStyles = makeStyles({
   root: {
     '& $notchedOutline': {
@@ -28,17 +26,8 @@ const useStyles = makeStyles({
   notchedOutline: {},
 });
 
-const Input = ({ label, type, helperText, ...rest }) => {
+const Input = ({ label, type, value, setValue, helperText, ...rest }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [fields, setFields] = useForm({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-  });
-
-  const { firstName, lastName, email, password } = fields;
-
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -59,8 +48,8 @@ const Input = ({ label, type, helperText, ...rest }) => {
         {...rest}
         id="password"
         type={type}
-        value={password}
-        onChange={setFields}
+        value={value}
+        onChange={setValue}
         endAdornment={
           type === 'password' && (
             <InputAdornment position="end">
