@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Button from '../../components/Btn';
 import Input from '../../components/Input';
-import heroImage from '../../Assets/sales_illustration.jpg';
+import heroImage from '../../Assets/10894.jpg';
 import logo from '../../Assets/The-Rudolf-Name-for-Website.png';
 import { useForm } from '../../hooks/useForm';
 
