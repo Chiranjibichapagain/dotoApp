@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   notchedOutline: {},
 });
 
-const Input = ({ label, type, value, setValue, helperText, ...rest }) => {
+const Input = ({ label, type, value, setValue, helperText, id, ...rest }) => {
   const [showPassword, setShowPassword] = useState(true);
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -47,7 +47,7 @@ const Input = ({ label, type, value, setValue, helperText, ...rest }) => {
         margin="none"
         classes={outlinedInputClasses}
         {...rest}
-        id="password"
+        id={id}
         type={showPassword ? 'text' : 'password'}
         value={value}
         onChange={setValue}

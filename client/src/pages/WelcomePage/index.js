@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 
 import Button from '../../components/Btn';
-import Input from '../../components/Input/Input';
+import Input from '../../components/Input';
 import heroImage from '../../Assets/sales_illustration.jpg';
 import logo from '../../Assets/The-Rudolf-Name-for-Website.png';
+import { useForm } from '../../hooks/useForm';
 
 import './WelcomePage.scss';
 
 const WelcomePage = () => {
   const [content, setContent] = useState('login');
+  const [fields, setFields] = useForm({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  const { name, email, password } = fields;
+
+  console.log('test--', name, email, password);
+
   return (
     <div className="welcomepage">
       <div className="welcomepage__hero">
@@ -29,8 +40,20 @@ const WelcomePage = () => {
               />
             </div>
             <h1 className="welcomepage__heading">Login</h1>
-            <Input label="Email" type="email" />
-            <Input label="Password" type="password" />
+            <Input
+              setValue={setFields}
+              value={email}
+              id="email"
+              label="Email"
+              type="email"
+            />
+            <Input
+              setValue={setFields}
+              value={password}
+              id="password"
+              label="Password"
+              type="password"
+            />
 
             <div className="welcomepage__btn-div">
               <Button text="Login" />
@@ -56,9 +79,27 @@ const WelcomePage = () => {
               />
             </div>
             <h1 className="welcomepage__heading">Register</h1>
-            <Input label="Full Name" type="text" />
-            <Input label="Email" type="email" />
-            <Input label="Password" type="password" />
+            <Input
+              setValue={setFields}
+              value={name}
+              id="name"
+              label="Full Name"
+              type="text"
+            />
+            <Input
+              setValue={setFields}
+              value={email}
+              id="email"
+              label="Email"
+              type="email"
+            />
+            <Input
+              setValue={setFields}
+              value={password}
+              id="password"
+              label="Password"
+              type="password"
+            />
 
             <div className="welcomepage__btn-div">
               <Button text="Register" />
