@@ -1,6 +1,5 @@
 import React from 'react';
 
-import IconButton from '@material-ui/core/IconButton';
 import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 
