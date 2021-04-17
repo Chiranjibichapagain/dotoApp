@@ -4,6 +4,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const config = require('./utils/config');
+const todoRouter = require('./routes/todoRouter');
+const userRouter = require('./routes/userRouter');
 
 app.use(cors());
 app.use(express.json());
@@ -21,8 +23,7 @@ mongoose
     console.log('error connection to MongoDB:', error.message);
   });
 
-app.use('/api/todos', (req, res) => {
-  res.send('success!!!');
-});
+app.use('/api/todos', todoRouter);
+app.use('/api/users', userRouter);
 
 module.exports = app;
