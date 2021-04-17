@@ -1,8 +1,11 @@
-const addTodo = async (req, res, next) => {
+const User = require('../model/user');
+const Todo = require('../model/todo');
+
+const getUserTodos = async (req, res, next) => {
   res.send('connection established');
 };
 
-const getUserTodos = async (req, res, next) => {
+const addTodo = async (req, res, next) => {
   res.send('connection established');
 };
 

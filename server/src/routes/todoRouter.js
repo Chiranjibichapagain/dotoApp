@@ -1,4 +1,5 @@
 const todoRouter = require('express').Router();
+const { isAuthenticated } = require('../helpers/middlewares');
 
 const {
   getUserTodos,
@@ -7,9 +8,9 @@ const {
   deleteTodo,
 } = require('../controllers/todo');
 
-todoRouter.get('/:userId', getUserTodos);
-todoRouter.post('/', addTodo);
-todoRouter.put('./:todoId', updateTodo);
-todoRouter.delete('./:todoId', deleteTodo);
+todoRouter.get('/:userId', isAuthenticated, getUserTodos);
+todoRouter.post('/', isAuthenticated, addTodo);
+todoRouter.put('./:todoId', isAuthenticated, updateTodo);
+todoRouter.delete('./:todoId', isAuthenticated, deleteTodo);
 
 module.exports = todoRouter;

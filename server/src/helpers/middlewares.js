@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 const { SECRET } = require('../utils/config');
 
-export const tokenExtractor = (request, response, next) => {
+const tokenExtractor = (request, response, next) => {
   const authorization = request.get('authorization');
   if (authorization && authorization.toLowerCase().startsWith('bearer')) {
     return authorization.substring(7);
@@ -11,7 +11,7 @@ export const tokenExtractor = (request, response, next) => {
   next();
 };
 
-export const isAuthenticated = async (req, res, next) => {
+const isAuthenticated = async (req, res, next) => {
   const token = req.get('authorization');
   if (!token) return res.status(401).send('excess denied');
   try {
@@ -24,3 +24,5 @@ export const isAuthenticated = async (req, res, next) => {
     res.status(400).send('Token not found or invalid token');
   }
 };
+
+module.exports = { tokenExtractor, isAuthenticated };
