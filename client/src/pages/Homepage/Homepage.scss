@@ -1,0 +1,106 @@
+@import '../../config';
+
+.homepage {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 100px;
+  background-color: #444d636b;
+  background-image: linear-gradient(180deg, #d6d6d6, #444d63);
+
+  &__heading {
+    text-align: center;
+    margin: 10px 0 20px;
+    color: $black;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  &__todos {
+    width: 450px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__add-todo {
+    font-size: 50px;
+    color: green;
+    position: absolute;
+    top: -40px;
+    right: 0px;
+    cursor: pointer;
+  }
+}
+
+.close {
+  font-family: 'Roboto', sans-serif;
+  color: $black;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: end;
+}
+
+.add-modal {
+  width: 40vw;
+  padding: 20px 50px;
+
+  &__title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: $black;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  &__form {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__btn-div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  &__text {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1em;
+    text-align: center;
+    color: $white;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .add-modal {
+    width: 60vw;
+
+    &__title {
+      font-size: 1em;
+    }
+    form {
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .homepage {
+    &__todos {
+      width: 315px;
+    }
+  }
+  .add-modal {
+    width: 90vw;
+  }
+
+  .close {
+    width: 100vw;
+  }
+}
