@@ -64,4 +64,18 @@ const logUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, logUser };
+const getUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findOne({ _id: userId }).populate('todos');
+    if (user) {
+      res.send(user);
+    } else {
+      throw new Error('User info with given ID not found!');
+    }
+  } catch (error) {
+    res.json({ Error: error.message });
+  }
+};
+
+module.exports = { registerUser, logUser, getUser };

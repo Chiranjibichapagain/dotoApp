@@ -16,10 +16,12 @@ const userSchema = new mongoose.Schema({
     required: 'Password is required',
   },
 
-  todos: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Todo',
-  },
+  todos: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Todo',
+    },
+  ],
 });
 
 userSchema.set('toJSON', {

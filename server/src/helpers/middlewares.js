@@ -4,7 +4,9 @@ const { SECRET } = require('../utils/config');
 const tokenExtractor = (request, response, next) => {
   const authorization = request.get('authorization');
   if (authorization && authorization.toLowerCase().startsWith('bearer')) {
-    return authorization.substring(7);
+    const token = authorization.substring(7);
+    const decodedToken = jwt.verify(token, SECRET);
+    return decodedToken;
   } else {
     response.status(401).send('excess denied');
   }
