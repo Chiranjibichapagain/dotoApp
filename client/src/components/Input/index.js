@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   root: {
-    marginBottom: '20px',
+    marginBottom: '10px',
     '& $notchedOutline': {
       borderColor: '#444d63a1',
     },
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 });
 
 const Input = ({ label, type, value, setValue, helperText, id, ...rest }) => {
-  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
