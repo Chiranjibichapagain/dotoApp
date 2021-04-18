@@ -32,7 +32,7 @@ const addTodo = async (req, res) => {
   }
 };
 
-const updateTodo = async (req, res, next) => {
+const updateTodo = async (req, res) => {
   try {
     const { todoId } = req.params;
     const todo = await Todo.findOne({ _id: todoId });
