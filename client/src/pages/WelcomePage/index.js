@@ -7,9 +7,11 @@ import logo from '../../Assets/The-Rudolf-Name-for-Website.png';
 import { useForm } from '../../hooks/useForm';
 
 import './WelcomePage.scss';
+import { registerUser } from '../../services/user';
 
 const WelcomePage = () => {
   const [content, setContent] = useState('login');
+  const [error, setError] = useState('');
   const [fields, setFields] = useForm({
     name: '',
     email: '',
@@ -27,8 +29,20 @@ const WelcomePage = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     const user = { name, email, password };
-    console.log('registered');
+
+    registerUser(user)
+      .then((response) => {
+        if (response.data) {
+          setContent('login');
+          console.log('test-user', response.data);
+        }
+      })
+      .catch((error) => {
+        setError(error.response.data);
+      });
   };
+
+  console.log('test--', error.Error);
 
   return (
     <div className="welcomepage">
