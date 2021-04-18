@@ -61,8 +61,20 @@ const updateTodo = async (req, res) => {
   }
 };
 
-const deleteTodo = async (req, res, next) => {
-  res.send('connection established');
+const deleteTodo = async (req, res) => {
+  try {
+    const { todoId } = req.params;
+    const todo = await Todo.findOne({ _id: todoId });
+
+    if (todo) {
+      await Todo.findByIdAndDelete(todoId);
+      res.json({ Message: `Todo- ${todoId} successfully deleted!` });
+    } else {
+      throw new Error('Todo with given id not found!');
+    }
+  } catch (error) {
+    res.json({ Error: error.message });
+  }
 };
 
 module.exports = { addTodo, updateTodo, deleteTodo };
