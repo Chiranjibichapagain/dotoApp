@@ -1,14 +1,8 @@
 const todoRouter = require('express').Router();
 const { isAuthenticated } = require('../helpers/middlewares');
 
-const {
-  getUserTodos,
-  addTodo,
-  updateTodo,
-  deleteTodo,
-} = require('../controllers/todo');
+const { addTodo, updateTodo, deleteTodo } = require('../controllers/todo');
 
-todoRouter.get('/:userId', isAuthenticated, getUserTodos);
 todoRouter.post('/', isAuthenticated, addTodo);
 todoRouter.put('./:todoId', isAuthenticated, updateTodo);
 todoRouter.delete('./:todoId', isAuthenticated, deleteTodo);
