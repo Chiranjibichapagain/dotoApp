@@ -6,6 +6,6 @@ export const registerUser = async (user) => {
   return await axios.post(`${baseUrl}/register`, user);
 };
 
-export const login = async ({ credentials }) => {
+export const login = async (credentials) => {
   return await axios.post(`${baseUrl}/login`, credentials);
 };

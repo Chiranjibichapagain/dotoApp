@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Button from '../../components/Btn';
 import Input from '../../components/Input';
 import heroImage from '../../Assets/10894.jpg';
 import logo from '../../Assets/The-Rudolf-Name-for-Website.png';
 import { useForm } from '../../hooks/useForm';
+import { login, registerUser } from '../../services/user';
 
 import './WelcomePage.scss';
-import { registerUser } from '../../services/user';
 
 const WelcomePage = () => {
+  const history = useHistory();
   const [content, setContent] = useState('login');
   const [error, setError] = useState('');
   const [fields, setFields] = useForm({
@@ -23,7 +25,16 @@ const WelcomePage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     const credentials = { email, password };
-    console.log('logged in');
+    login(credentials)
+      .then((response) => {
+        if (response.data) {
+          localStorage.setItem('todo-app', response.data);
+          history.push('/todos');
+        }
+      })
+      .catch((error) => {
+        setError(error.response.data);
+      });
   };
 
   const handleRegister = (e) => {
@@ -34,15 +45,12 @@ const WelcomePage = () => {
       .then((response) => {
         if (response.data) {
           setContent('login');
-          console.log('test-user', response.data);
         }
       })
       .catch((error) => {
         setError(error.response.data);
       });
   };
-
-  console.log('test--', error.Error);
 
   return (
     <div className="welcomepage">
