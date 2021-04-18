@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Button from '../../components/Btn';
 import Input from '../../components/Input';
 import heroImage from '../../Assets/10894.jpg';
 import logo from '../../Assets/The-Rudolf-Name-for-Website.png';
 import { useForm } from '../../hooks/useForm';
+import { login, registerUser } from '../../services/user';
 
 import './WelcomePage.scss';
 
 const WelcomePage = () => {
+  const history = useHistory();
   const [content, setContent] = useState('login');
+  const [error, setError] = useState('');
   const [fields, setFields] = useForm({
     name: '',
     email: '',
@@ -20,14 +24,40 @@ const WelcomePage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const credentials = { email, password };
-    console.log('logged in');
+    if (!(email && password)) {
+      setError('All fields are required');
+    } else {
+      const credentials = { email, password };
+      login(credentials)
+        .then((response) => {
+          if (response.data) {
+            localStorage.setItem('todo-app', JSON.stringify(response.data));
+            history.push('/todos');
+          }
+        })
+        .catch((error) => {
+          setError(error.response.data.Error);
+        });
+    }
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const user = { name, email, password };
-    console.log('registered');
+    if (!(name && email && password)) {
+      setError('All fiels are required');
+    } else {
+      const user = { name, email, password };
+
+      registerUser(user)
+        .then((response) => {
+          if (response.data) {
+            setContent('login');
+          }
+        })
+        .catch((error) => {
+          setError(error.response.data);
+        });
+    }
   };
 
   return (
@@ -51,6 +81,7 @@ const WelcomePage = () => {
             </div>
             <h1 className="welcomepage__heading">Login</h1>
             <Input
+              error={error ? true : false}
               setValue={setFields}
               value={email}
               id="email"
@@ -58,11 +89,13 @@ const WelcomePage = () => {
               type="email"
             />
             <Input
+              error={error ? true : false}
               setValue={setFields}
               value={password}
               id="password"
               label="Password"
               type="password"
+              helperText={error}
             />
 
             <div className="welcomepage__btn-div">
@@ -90,6 +123,7 @@ const WelcomePage = () => {
             </div>
             <h1 className="welcomepage__heading">Register</h1>
             <Input
+              error={error ? true : false}
               setValue={setFields}
               value={name}
               id="name"
@@ -97,6 +131,7 @@ const WelcomePage = () => {
               type="text"
             />
             <Input
+              error={error ? true : false}
               setValue={setFields}
               value={email}
               id="email"
@@ -104,11 +139,13 @@ const WelcomePage = () => {
               type="email"
             />
             <Input
+              error={error ? true : false}
               setValue={setFields}
               value={password}
               id="password"
               label="Password"
               type="password"
+              helperText={error}
             />
 
             <div className="welcomepage__btn-div">

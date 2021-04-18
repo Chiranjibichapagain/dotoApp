@@ -28,7 +28,7 @@ const registerUser = async (req, res) => {
       }
     }
   } catch (error) {
-    res.json({ Error: error.message });
+    res.status(400).json({ Error: error.message });
   }
 };
 
@@ -43,7 +43,7 @@ const logUser = async (req, res) => {
       : await bcrypt.compare(password, user.password);
 
     if (!(user && correctPassword)) {
-      throw new Error(`Email and Password didn't match!`);
+      throw new Error("Email and Password didn't match!");
     } else {
       const userInfo = {
         name: user.name,
@@ -60,7 +60,7 @@ const logUser = async (req, res) => {
       }
     }
   } catch (error) {
-    res.json({ Error: error.message });
+    res.status(400).json({ Error: error.message });
   }
 };
 
