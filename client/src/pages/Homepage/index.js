@@ -51,8 +51,6 @@ const Homepage = () => {
 
   const { title, description } = fields;
 
-  console.log('xxx-', title, description);
-
   const handleComplete = () => {
     console.log('completed!');
   };

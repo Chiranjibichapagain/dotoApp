@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import logo from '../../Assets/The-Rudolf-Name-for-Website.png';
 import Btn from '../Btn';
-import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 import './Header.scss';
 import DropDownMenu from '../DropDownMenu';
+import { useUser } from '../../hooks/useFetchData';
 
 const Header = () => {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const history = useHistory();
+  const [user, logout] = useUser();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setIsUserLoggedIn(true);
-    console.log('logged in');
-  };
   const handleLogout = (e) => {
     e.preventDefault();
-    setIsUserLoggedIn(false);
-    console.log('logged out');
+    logout();
+    history.push('/');
   };
+
+  const userName = user && user.userInfo.name.split(' ')[0];
 
   return (
     <div className="header">
@@ -28,17 +27,12 @@ const Header = () => {
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         className="header__icon-wrapper"
       >
-        {isUserLoggedIn ? (
-          <PersonIcon fontSize="inherit" />
-        ) : (
-          <MenuIcon fontSize="inherit" />
-        )}
+        {user && <PersonIcon fontSize="inherit" />}
+        <p className="header__username">{userName}</p>
       </div>
       <div className="header__btn-wrapper">
-        <Btn
-          handleClick={isUserLoggedIn ? handleLogout : handleLogin}
-          text={isUserLoggedIn ? 'Log Out' : 'Log In'}
-        />
+        <p className="header__username">{userName}</p>
+        {user && <Btn handleClick={handleLogout} text="Log Out" />}
       </div>
       <div
         className={
@@ -47,10 +41,7 @@ const Header = () => {
             : 'header__dropdown'
         }
       >
-        <DropDownMenu
-          text={isUserLoggedIn ? 'Log Out' : 'Log In'}
-          handleClick={isUserLoggedIn ? handleLogout : handleLogin}
-        />
+        <DropDownMenu text="Log Out" handleClick={handleLogout} />
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ const WelcomePage = () => {
       login(credentials)
         .then((response) => {
           if (response.data) {
-            localStorage.setItem('todo-app', response.data);
+            localStorage.setItem('todo-app', JSON.stringify(response.data));
             history.push('/todos');
           }
         })

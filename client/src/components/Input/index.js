@@ -48,7 +48,7 @@ const Input = ({ label, type, value, setValue, helperText, id, ...rest }) => {
         classes={outlinedInputClasses}
         {...rest}
         id={id}
-        type={showPassword ? 'text' : 'password'}
+        type={showPassword ? 'text' : type}
         value={value}
         onChange={setValue}
         endAdornment={
