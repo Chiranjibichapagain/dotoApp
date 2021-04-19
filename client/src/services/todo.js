@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3001/api/todos';
+const baseUrl = '/api/todos';
 
 export const addTodo = async (todo, config) => {
   console.log('test', todo);

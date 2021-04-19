@@ -5,7 +5,7 @@ import WelcomePage from './pages/WelcomePage';
 import Homepage from './pages/Homepage';
 import ProtectedRoute from './utils/ProtectedRoute';
 
-const Routes = ({ setLog }) => (
+const Routes = () => (
   <Switch>
     <Route exact path="/" component={WelcomePage} />
     <ProtectedRoute exact path="/todos" component={Homepage} />
