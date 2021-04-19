@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import logo from '../../Assets/The-Rudolf-Name-for-Website.png';
-import Btn from '../Btn';
-import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import './Header.scss';
-import DropDownMenu from '../DropDownMenu';
 import { useUser } from '../../hooks/useFetchData';
 
 const Header = () => {
