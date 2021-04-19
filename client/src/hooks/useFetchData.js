@@ -22,7 +22,8 @@ export const useTodos = (status) => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    const userID = JSON.parse(localStorage.getItem('todo-app')).userInfo.userId;
+    const LS = JSON.parse(localStorage.getItem('todo-app'));
+    const userID = LS && LS.userInfo.userId;
     const fetchData = () => {
       getUser(userID).then((response) => {
         setTodos(response.data.todos);

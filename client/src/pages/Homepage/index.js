@@ -21,7 +21,8 @@ const Homepage = () => {
   const [todos] = useTodos(status);
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('todo-app')).token;
+    const LS = JSON.parse(localStorage.getItem('todo-app'));
+    const token = LS && LS.token;
     setToken(token);
   }, []);
 

@@ -3,11 +3,12 @@ import { Switch, Route } from 'react-router-dom';
 
 import WelcomePage from './pages/WelcomePage';
 import Homepage from './pages/Homepage';
+import ProtectedRoute from './utils/ProtectedRoute';
 
 const Routes = ({ setLog }) => (
   <Switch>
     <Route exact path="/" component={WelcomePage} />
-    <Route exact path="/todos" component={Homepage} />
+    <ProtectedRoute exact path="/todos" component={Homepage} />
   </Switch>
 );
 
