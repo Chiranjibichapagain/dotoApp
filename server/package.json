@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd .. && cd client && npm run build",
-    "install-client": "cd .. && cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client",
     "start": "nodemon ./src/index.js"
   },
   "keywords": [],
