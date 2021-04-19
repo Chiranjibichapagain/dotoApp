@@ -37,11 +37,12 @@ const updateTodo = async (req, res) => {
     const { todoId } = req.params;
     const todo = await Todo.findOne({ _id: todoId });
     if (todo) {
-      const { title, description } = req.body;
+      const { title, description, completed } = req.body;
 
       const updates = {
         title: title ? title : todo.title,
         description: description ? description : todo.description,
+        completed: completed ? JSON.parse(completed) : todo.completed,
       };
 
       await Todo.findByIdAndUpdate(todoId, updates, { new: true })

@@ -2,7 +2,7 @@
 
 .homepage {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
   padding-bottom: 100px;
   background-color: #444d636b;
@@ -22,6 +22,18 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
+  }
+
+  &__no-todo {
+    max-width: 100%;
+    background-color: $white;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    color: $secondary;
   }
 
   &__add-todo {

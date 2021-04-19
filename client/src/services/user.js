@@ -9,3 +9,7 @@ export const registerUser = async (user) => {
 export const login = async (credentials) => {
   return await axios.post(`${baseUrl}/login`, credentials);
 };
+
+export const getUser = async (id) => {
+  return await axios.get(`${baseUrl}/${id}`);
+};
