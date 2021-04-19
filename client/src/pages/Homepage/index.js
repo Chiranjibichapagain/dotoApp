@@ -62,6 +62,9 @@ const Homepage = () => {
     deleteTodo(id, config).then((response) => {
       if (response.data) {
         setStatus('deleted');
+        setTimeout(() => {
+          setStatus('');
+        }, 500);
       }
     });
   };
@@ -77,6 +80,9 @@ const Homepage = () => {
           if (response.data) {
             setIsModalOpen(false);
             setStatus('created');
+            setTimeout(() => {
+              setStatus('');
+            }, 500);
           }
         })
         .catch((error) => {
@@ -129,7 +135,7 @@ const Homepage = () => {
             <Input
               error={error ? true : false}
               type="text"
-              label="Description"
+              label="Details"
               setValue={setFields}
               id="description"
               value={description}
