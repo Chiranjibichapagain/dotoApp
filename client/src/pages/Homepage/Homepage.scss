@@ -106,8 +106,17 @@
 }
 @media screen and (max-width: 450px) {
   .homepage {
+    &__heading {
+      margin-top: 30px;
+    }
+
+    &__add-todo {
+      top: -50px;
+    }
+
     &__todos {
-      width: 315px;
+      width: 95vw;
+      margin-top: 70px;
     }
   }
   .add-modal {

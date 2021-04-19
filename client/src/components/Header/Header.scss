@@ -84,6 +84,7 @@
     &__btn-wrapper {
       width: 12rem;
       margin-right: 20px;
+      justify-content: flex-end;
     }
 
     &__icon-wrapper {
@@ -94,7 +95,7 @@
     }
 
     &__username {
-      margin: 0px;
+      display: none;
     }
   }
 }
