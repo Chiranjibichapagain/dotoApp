@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { SECRET } = require('../utils/config');
 
+// Function to extract the token from the request and return the decoded value from the token
 const tokenExtractor = (request, response, next) => {
   const authorization = request.get('authorization');
   if (authorization && authorization.toLowerCase().startsWith('bearer')) {
@@ -13,6 +14,7 @@ const tokenExtractor = (request, response, next) => {
   next();
 };
 
+// Authentication middleware that protects routes from being accessed form unauthorized requests
 const isAuthenticated = async (req, res, next) => {
   const token = req.get('authorization');
   if (!token) return res.status(401).send('excess denied');
