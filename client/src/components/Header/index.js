@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import logo from '../../Assets/The-Rudolf-Name-for-Website.png';
-import Btn from '../Btn';
-import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import './Header.scss';
-import DropDownMenu from '../DropDownMenu';
 import { useUser } from '../../hooks/useFetchData';
 
 const Header = () => {
   const history = useHistory();
   const [user, logout] = useUser();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -23,25 +20,14 @@ const Header = () => {
   return (
     <div className="header">
       <img className="header__logo" src={logo} alt="The Rudolf Logo" />
-      <div
-        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className="header__icon-wrapper"
-      >
-        {user && <PersonIcon fontSize="inherit" />}
-        <p className="header__username">{userName}</p>
-      </div>
       <div className="header__btn-wrapper">
         <p className="header__username">{userName}</p>
-        {user && <Btn handleClick={handleLogout} text="Log Out" />}
-      </div>
-      <div
-        className={
-          isDropdownOpen
-            ? 'header__dropdown header__dropdown--open'
-            : 'header__dropdown'
-        }
-      >
-        <DropDownMenu text="Log Out" handleClick={handleLogout} />
+        {user && (
+          <div onClick={handleLogout} className="header__button">
+            <ExitToAppRoundedIcon fontSize="large" />
+            <span>LOG OUT</span>
+          </div>
+        )}
       </div>
     </div>
   );

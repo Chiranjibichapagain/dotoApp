@@ -46,6 +46,7 @@
     color: rgb(29, 92, 29);
     transition: 0.3s ease-in-out !important;
     margin: 5px 0;
+    cursor: pointer;
 
     &--delete {
       color: $primary;

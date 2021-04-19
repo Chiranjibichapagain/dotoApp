@@ -37,6 +37,9 @@ const WelcomePage = () => {
         })
         .catch((error) => {
           setError(error.response.data.Error);
+          setTimeout(() => {
+            setError('');
+          }, 5000);
         });
     }
   };
@@ -56,6 +59,9 @@ const WelcomePage = () => {
         })
         .catch((error) => {
           setError(error.response.data);
+          setTimeout(() => {
+            setError('');
+          }, 5000);
         });
     }
   };

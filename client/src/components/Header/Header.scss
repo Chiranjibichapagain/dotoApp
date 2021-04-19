@@ -16,8 +16,17 @@
   &__btn-wrapper {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-right: 100px;
     width: 15rem;
+  }
+
+  &__button {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
   }
 
   &__username {
@@ -73,7 +82,8 @@
     }
 
     &__btn-wrapper {
-      display: none;
+      width: 12rem;
+      margin-right: 20px;
     }
 
     &__icon-wrapper {
@@ -84,8 +94,35 @@
     }
 
     &__username {
-      font-size: 0.3em;
       margin: 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header {
+    padding: 10px 0;
+
+    &__logo {
+      width: 8rem;
+      margin-left: 10px;
+    }
+
+    &__btn-wrapper {
+      width: 10rem;
+      margin-right: 10px;
+    }
+
+    &__icon-wrapper {
+      margin-right: 10px;
+    }
+
+    &__button {
+      margin-left: 10px;
+    }
+
+    &__username {
+      font-size: 1em;
     }
   }
 }

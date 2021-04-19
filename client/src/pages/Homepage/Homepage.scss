@@ -2,7 +2,7 @@
 
 .homepage {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
   padding-bottom: 100px;
   background-color: #444d636b;
@@ -10,7 +10,7 @@
 
   &__heading {
     text-align: center;
-    margin: 10px 0 20px;
+    margin: 10px 0 40px;
     color: $black;
     font-family: 'Roboto', sans-serif;
   }
@@ -24,6 +24,18 @@
     position: relative;
   }
 
+  &__no-todo {
+    max-width: 100%;
+    background-color: $white;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    color: $secondary;
+  }
+
   &__add-todo {
     font-size: 50px;
     color: green;
@@ -31,6 +43,8 @@
     top: -40px;
     right: 0px;
     cursor: pointer;
+    opacity: 0;
+    animation: add-btn 1s ease 2s forwards;
   }
 }
 
@@ -102,5 +116,21 @@
 
   .close {
     width: 100vw;
+  }
+}
+
+@keyframes add-btn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
